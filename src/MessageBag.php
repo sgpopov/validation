@@ -102,9 +102,9 @@ class MessageBag implements MessageBagContract
      *
      * @param string $key
      *
-     * @return string
+     * @return null|string
      */
-    public function first(string $key = null) : string
+    public function first(string $key = null)
     {
         $messages = is_null($key) ? $this->all() : $this->get($key);
 
@@ -149,15 +149,5 @@ class MessageBag implements MessageBagContract
     public function toArray() : array
     {
         return (array) $this->messages;
-    }
-
-    /**
-     * Determine if the message bag has any messages.
-     *
-     * @return bool
-     */
-    public function isEmpty(): bool
-    {
-        return $this->hasAny() === false;
     }
 }

@@ -49,13 +49,6 @@ interface MessageBag
     public function first(string $key = null);
 
     /**
-     * Determine if the message bag has any messages.
-     *
-     * @return bool
-     */
-    public function isEmpty() : bool;
-
-    /**
      * Get the number of messages in the container.
      *
      * @return int

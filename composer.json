@@ -1,0 +1,19 @@
+{
+    "name": "svil4ok/validation",
+    "description": "PHP validation library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Svilen Popov",
+            "email": "svil4ok@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "svil4ok\\Validator\\": "src/"
+        }
+    }
+}

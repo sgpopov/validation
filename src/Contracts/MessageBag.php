@@ -1,6 +1,6 @@
 <?php
 
-namespace svil4ok\Validator\Contracts;
+namespace svil4ok\Validation\Contracts;
 
 interface MessageBag
 {

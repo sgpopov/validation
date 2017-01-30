@@ -1,9 +1,9 @@
 <?php
 
-namespace svil4ok\Validator;
+namespace svil4ok\Validation;
 
-use svil4ok\Validator\Contracts\Rule;
-use svil4ok\Validator\Rules\Required;
+use svil4ok\Validation\Contracts\Rule;
+use svil4ok\Validation\Rules\Required;
 
 class RulesParser
 {

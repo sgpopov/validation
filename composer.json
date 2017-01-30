@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "svil4ok\\Validator\\": "src/"
+            "svil4ok\\Validation\\": "src/"
         }
     }
 }

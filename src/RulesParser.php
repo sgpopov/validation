@@ -2,6 +2,9 @@
 
 namespace svil4ok\Validator;
 
+use svil4ok\Validator\Contracts\Rule;
+use svil4ok\Validator\Rules\Required;
+
 class RulesParser
 {
     /**
@@ -24,11 +27,12 @@ class RulesParser
      *
      * @param array|string $rules
      *
-     * @return array
+     * @return object
      */
-    public function resolve($rules) : array
+    public function resolve($rules)
     {
         $resolved = [];
+        $isRequired = false;
 
         if (is_string($rules)) {
             $rules = explode('|', $rules);
@@ -47,10 +51,15 @@ class RulesParser
                 );
 
                 $resolved[] = $validator;
+
+
+                if ($this->isRequired($validator)) {
+                    $isRequired = true;
+                }
             }
         }
 
-        return $resolved;
+        return (object) compact('resolved', 'isRequired');
     }
 
     /**
@@ -77,5 +86,17 @@ class RulesParser
     protected function getValidator() : Validator
     {
         return $this->validator;
+    }
+
+    /**
+     * Determine if attribute rules should be applied.
+     *
+     * @param Rule $rule
+     *
+     * @return bool
+     */
+    protected function isRequired($rule) : bool
+    {
+        return $rule instanceof Required;
     }
 }

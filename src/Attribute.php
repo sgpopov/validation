@@ -33,41 +33,69 @@ class Attribute
 
      * @param string $attribute
      * @param array $rules
+     * @param bool $required
      */
-    public function __construct($attribute, array $rules = [])
+    public function __construct($attribute, array $rules = [], bool $required = false)
     {
         $this->key = $attribute;
+        $this->required = $required;
 
         foreach ($rules as $rule) {
             $this->addRule($rule);
         }
     }
 
+    /**
+     * @param Rule $rule
+     *
+     * @return void
+     */
     public function addRule(Rule $rule)
     {
-//        $rule->setAttribute($this);
-//        $rule->setValidation($this->validation);
-
         $this->rules[$rule->getSlug()] = $rule;
     }
 
+    /**
+     * @param $ruleKey
+     *
+     * @return mixed|null
+     */
     public function getRule($ruleKey)
     {
         return $this->hasRule($ruleKey) ? $this->rules[$ruleKey] : null;
     }
 
-    public function getRules()
+    /**
+     * @return array
+     */
+    public function getRules() : array
     {
         return $this->rules;
     }
 
-    public function hasRule($ruleKey)
+    /**
+     * @param $ruleKey
+     *
+     * @return bool
+     */
+    public function hasRule($ruleKey) : bool
     {
         return isset($this->rules[$ruleKey]);
     }
 
+    /**
+     * @return string
+     */
     public function getKey()
     {
         return $this->key;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRequired()
+    {
+        return $this->required;
     }
 }

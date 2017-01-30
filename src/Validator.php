@@ -82,6 +82,11 @@ class Validator
         return (new self($data, $rules, $messages))->run();
     }
 
+    /**
+     * Run validaiton.
+     *
+     * @return $this
+     */
     public function run()
     {
         foreach($this->attributes as $attributeKey => $attribute) {
@@ -91,18 +96,26 @@ class Validator
         return $this;
     }
 
+    /**
+     * Validate each attribute applied rules.
+     *
+     * @param Attribute $attribute
+     *
+     * @return void
+     */
     protected function validateAttribute(Attribute $attribute)
     {
         $attributeKey = $attribute->getKey();
         $rules = $attribute->getRules();
         $value = $this->getValue($attributeKey);
         $isEmptyValue = $this->isEmpty($value);
+        $isOptional = $this->isOptional($attribute);
+
+        if ($isEmptyValue && $isOptional) {
+            return;
+        }
 
         foreach ($rules as $rule) {
-            if ($isEmptyValue && $this->isOptional($attribute, $rule)) {
-                continue;
-            }
-
             $isValid = $rule->passes($value);
 
             if ($isValid !== true) {
@@ -125,17 +138,25 @@ class Validator
         $this->messages->add($attribute->getKey(), $message);
     }
 
+    /**
+     * Retrieve rule error message.
+     *
+     * @param Attribute $attribute
+     * @param $value
+     * @param Rule $rule
+     *
+     * @return mixed|string
+     */
     protected function resolveMessage(Attribute $attribute, $value, Rule $rule)
     {
         $params = $rule->getParams();
         $attributeKey = $attribute->getKey();
         $slug = $rule->getSlug();
-        $alias = $this->resolveAttributeName($attribute);
 
         $message = $this->customMessages[$attributeKey . $this->messageSeparator . $slug] ?? $rule->getMessage();
 
         $vars = array_merge($params, [
-            'attribute' => $alias,
+            'attribute' => $attributeKey,
             'value' => $value,
         ]);
 
@@ -148,18 +169,20 @@ class Validator
         return $message;
     }
 
-    protected function resolveAttributeName(Attribute $attribute)
+    /**
+     * Get the value of a given attribute.
+     *
+     * @param string $attribute
+     *
+     * @return mixed|null
+     */
+    protected function getValue($attribute)
     {
-        return str_replace('_', ' ', $attribute->getKey());
-    }
-
-    protected function getValue($param)
-    {
-        if (array_key_exists($param, $this->data)) {
-            return $this->data[$param];
+        if (array_key_exists($attribute, $this->data)) {
+            return $this->data[$attribute];
         }
 
-        return $this->data;
+        return null;
     }
 
     /**
@@ -183,13 +206,13 @@ class Validator
     }
 
     /**
-     * @param Rule $rule
+     * @param Attribute $attribute
      *
      * @return bool
      */
-    protected function isOptional($rule) : bool
+    protected function isOptional(Attribute $attribute) : bool
     {
-        return $rule instanceof Required === false;
+        return $attribute->isRequired() === false;
     }
 
     /**
@@ -201,7 +224,7 @@ class Validator
     {
         if (is_string($value) || is_numeric($value)) {
             return $value;
-        } elseif(is_array($value) || is_object($value)) {
+        } else if(is_array($value) || is_object($value)) {
             return json_encode($value);
         } else {
             return '';
@@ -240,10 +263,14 @@ class Validator
      */
     public function setRules(array $rules)
     {
-        foreach ($rules as $attribute => $rules) {
-            $parsedRules = (new RulesParser($this))->resolve($rules);
+        foreach ($rules as $attribute => $appliedRules) {
+            $parsedRules = (new RulesParser($this))->resolve($appliedRules);
 
-            $this->attributes[$attribute] = new Attribute($attribute, $parsedRules);
+            $this->attributes[$attribute] = new Attribute(
+                $attribute,
+                $parsedRules->resolved,
+                $parsedRules->isRequired
+            );
         }
     }
 

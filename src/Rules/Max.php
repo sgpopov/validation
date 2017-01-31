@@ -65,7 +65,7 @@ class Max implements Rule
 
         $max = $params[0];
 
-        if (is_int($value)) {
+        if (is_numeric($value)) {
             return $value <= $max;
         }
 

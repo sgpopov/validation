@@ -46,12 +46,10 @@ class RulesParser
             if (is_string($rule)) {
                 list($rulename, $params) = $this->parseRule($rule);
 
-                $validator = call_user_func_array(
-                    $this->getValidator(), array_merge([$rulename], $params)
-                );
+                $validator = $this->getRule($rulename);
+                $validator->setParams($params);
 
-                $resolved[] = $validator;
-
+                $resolved[$rulename] = $validator;
 
                 if ($this->isRequired($validator)) {
                     $isRequired = true;
@@ -98,5 +96,25 @@ class RulesParser
     protected function isRequired($rule) : bool
     {
         return $rule instanceof Required;
+    }
+
+    /**
+     * Returns an instance of a rule validator.
+     *
+     * @param string $ruleKey
+     *
+     * @return Rule
+     *
+     * @throws \Exception
+     */
+    protected function getRule(string $ruleKey) : Rule
+    {
+        $validator = $this->validator->getRuleValidator($ruleKey);
+
+        if (!$validator) {
+            throw new \Exception("Validator for '{$ruleKey}' rule is not registered!");
+        }
+
+        return clone $validator;
     }
 }

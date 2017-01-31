@@ -304,33 +304,8 @@ class Validator
      *
      * @return mixed|null
      */
-    public function getRuleValidator($ruleKey)
+    public function getRuleValidator(string $ruleKey)
     {
         return $this->validators[$ruleKey] ?? null;
-    }
-
-    /**
-     * @param string $rule
-     *
-     * @return Rule
-     *
-     * @throws \Exception
-     */
-    public function __invoke($rule)
-    {
-        $args = func_get_args();
-        $rule = array_shift($args);
-        $params = $args;
-
-        $validator = $this->getRuleValidator($rule);
-
-        if (!$validator) {
-            throw new \Exception("Validator for '{$rule}' rule is not registered!");
-        }
-
-        $cloned = clone $validator;
-        $cloned->setParams($params);
-
-        return $cloned;
     }
 }

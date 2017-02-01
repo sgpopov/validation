@@ -15,7 +15,7 @@ trait RuleTrait
      *
      * @throws \InvalidArgumentException
      */
-    protected function requireParameterCount($count, $parameters, $rule)
+    public function requireParameterCount(int $count, array $parameters, string $rule)
     {
         if (count($parameters) < $count) {
             throw new \InvalidArgumentException("Validation rule {$rule} requires at least {$count} parameters.");

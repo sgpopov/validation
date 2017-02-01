@@ -4,6 +4,9 @@ namespace svil4ok\Validation;
 
 use svil4ok\Validation\Contracts\Rule;
 use svil4ok\Validation\Rules\Boolean;
+use svil4ok\Validation\Rules\Date;
+use svil4ok\Validation\Rules\DateAfter;
+use svil4ok\Validation\Rules\DateBefore;
 use svil4ok\Validation\Rules\Max;
 use svil4ok\Validation\Rules\Min;
 use svil4ok\Validation\Rules\Required;
@@ -282,10 +285,13 @@ class Validator
     protected function registerDefaultValidators()
     {
         $validators = [
-            Required::class,
-            Min::class,
+            Boolean::class,
+            Date::class,
+            DateAfter::class,
+            DateBefore::class,
             Max::class,
-            Boolean::class
+            Min::class,
+            Required::class
         ];
 
         foreach ($validators as $validator) {

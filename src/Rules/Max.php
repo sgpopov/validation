@@ -3,8 +3,9 @@
 namespace svil4ok\Validation\Rules;
 
 use svil4ok\Validation\Contracts\Rule;
+use svil4ok\Validation\Contracts\RuleWithArgs;
 
-class Max implements Rule
+class Max implements Rule, RuleWithArgs
 {
     use RuleTrait;
 

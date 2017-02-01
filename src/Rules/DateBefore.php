@@ -5,19 +5,20 @@ namespace svil4ok\Validation\Rules;
 use svil4ok\Validation\Contracts\Rule;
 use svil4ok\Validation\Contracts\RuleWithArgs;
 
-class Min implements Rule, RuleWithArgs
+class DateBefore implements Rule, RuleWithArgs
 {
     use RuleTrait;
+    use DateUtilsTrait;
 
     /**
      * @var string
      */
-    protected $slug = 'min';
+    protected $slug = 'date_before';
 
     /**
      * @var string
      */
-    protected $message = "The :attribute minimum is :min";
+    protected $message = "The :attribute date must be before :date.";
 
     /**
      * @var mixed
@@ -39,7 +40,7 @@ class Min implements Rule, RuleWithArgs
     {
         $params = $this->getParams();
 
-        return str_replace(':min', $params[0], $this->message);
+        return str_replace(':date', $params[0], $this->message);
     }
 
     /**
@@ -52,6 +53,9 @@ class Min implements Rule, RuleWithArgs
         $this->params = $params;
     }
 
+    /**
+     * @return array
+     */
     public function getParams() : array
     {
         return (array) $this->params;
@@ -68,20 +72,16 @@ class Min implements Rule, RuleWithArgs
 
         $this->requireParameterCount(1, $params, $this->getSlug());
 
-        $min = $params[0];
+        $dateBefore = $params[0];
 
-        if (is_int($value)) {
-            return $value >= $min;
+        if (!$this->isValidDate($value)) {
+            throw new \InvalidArgumentException('Attribute value must be a valid date.');
         }
 
-        if (is_string($value)) {
-            return strlen($value) >= $min;
+        if (!$this->isValidDate($dateBefore)) {
+            throw new \InvalidArgumentException("Supplied date '{$dateBefore}' is invalid.");
         }
 
-        if (is_array($value)) {
-            return count($value) >= $min;
-        }
-
-        return false;
+        return strtotime($value) < strtotime($dateBefore);
     }
 }

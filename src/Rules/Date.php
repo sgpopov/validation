@@ -3,21 +3,18 @@
 namespace svil4ok\Validation\Rules;
 
 use svil4ok\Validation\Contracts\Rule;
-use svil4ok\Validation\Contracts\RuleWithArgs;
 
-class Min implements Rule, RuleWithArgs
+class Date implements Rule
 {
-    use RuleTrait;
+    /**
+     * @var string
+     */
+    protected $slug = 'date';
 
     /**
      * @var string
      */
-    protected $slug = 'min';
-
-    /**
-     * @var string
-     */
-    protected $message = "The :attribute minimum is :min";
+    protected $message = "The :attribute is not valid date format.";
 
     /**
      * @var mixed
@@ -37,9 +34,7 @@ class Min implements Rule, RuleWithArgs
      */
     public function getMessage() : string
     {
-        $params = $this->getParams();
-
-        return str_replace(':min', $params[0], $this->message);
+        return $this->message;
     }
 
     /**
@@ -52,36 +47,33 @@ class Min implements Rule, RuleWithArgs
         $this->params = $params;
     }
 
+    /**
+     * @return array
+     */
     public function getParams() : array
     {
         return (array) $this->params;
     }
 
     /**
+     * Validate that an attribute value is a valid date.
+     *
      * @param mixed $value
      *
      * @return bool
      */
     public function passes($value) : bool
     {
-        $params = $this->getParams();
-
-        $this->requireParameterCount(1, $params, $this->getSlug());
-
-        $min = $params[0];
-
-        if (is_int($value)) {
-            return $value >= $min;
+        if (!is_string($value) && !is_numeric($value)) {
+            return false;
         }
 
-        if (is_string($value)) {
-            return strlen($value) >= $min;
+        if (strtotime($value) === false) {
+            return false;
         }
 
-        if (is_array($value)) {
-            return count($value) >= $min;
-        }
+        $date = date_parse($value);
 
-        return false;
+        return checkdate($date['month'], $date['day'], $date['year']);
     }
 }

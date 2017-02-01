@@ -3,6 +3,7 @@
 namespace svil4ok\Validation;
 
 use svil4ok\Validation\Contracts\Rule;
+use svil4ok\Validation\Rules\Boolean;
 use svil4ok\Validation\Rules\Max;
 use svil4ok\Validation\Rules\Min;
 use svil4ok\Validation\Rules\Required;
@@ -283,7 +284,8 @@ class Validator
         $validators = [
             Required::class,
             Min::class,
-            Max::class
+            Max::class,
+            Boolean::class
         ];
 
         foreach ($validators as $validator) {

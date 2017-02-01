@@ -19,6 +19,23 @@ class MaxTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      *
+     * @covers Min::passes()
+     */
+    public function shouldRaiseExceptionForMissingParams()
+    {
+        $this->setExpectedException(
+            \InvalidArgumentException::class,
+            'Validation rule max requires at least 1 parameters.'
+        );
+
+        $this->rule->setParams([]);
+
+        $this->assertTrue($this->rule->passes(10));
+    }
+
+    /**
+     * @test
+     *
      * @covers Max::passes()
      */
     public function shouldValidateNumericValues()

@@ -225,7 +225,7 @@ class Validator
     {
         if (is_string($value) || is_numeric($value)) {
             return $value;
-        } else if(is_array($value) || is_object($value)) {
+        } else if (is_array($value) || is_object($value)) {
             return json_encode($value);
         } else {
             return '';

@@ -28,7 +28,7 @@ class Attribute
 
     /**
      * Attribute constructor.
-
+     *
      * @param string $attribute
      * @param array $rules
      * @param bool $required

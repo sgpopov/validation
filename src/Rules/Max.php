@@ -6,6 +6,8 @@ use svil4ok\Validation\Contracts\Rule;
 
 class Max implements Rule
 {
+    use RuleTrait;
+
     /**
      * @var string
      */
@@ -24,7 +26,7 @@ class Max implements Rule
     /**
      * @return string
      */
-    public function getSlug(): string
+    public function getSlug() : string
     {
         return $this->slug;
     }
@@ -62,6 +64,8 @@ class Max implements Rule
     public function passes($value) : bool
     {
         $params = $this->getParams();
+
+        $this->requireParameterCount(1, $params, $this->getSlug());
 
         $max = $params[0];
 

@@ -21,6 +21,23 @@ class MinTest extends \PHPUnit_Framework_TestCase
      *
      * @covers Min::passes()
      */
+    public function shouldRaiseExceptionForMissingParams()
+    {
+        $this->setExpectedException(
+            \InvalidArgumentException::class,
+            'Validation rule min requires at least 1 parameters.'
+        );
+
+        $this->rule->setParams([]);
+
+        $this->assertTrue($this->rule->passes(10));
+    }
+
+    /**
+     * @test
+     *
+     * @covers Min::passes()
+     */
     public function shouldValidateNumericValues()
     {
         $this->rule->setParams([10]);

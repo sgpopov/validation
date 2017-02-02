@@ -3,6 +3,7 @@
 namespace svil4ok\Validation;
 
 use svil4ok\Validation\Contracts\Rule;
+use svil4ok\Validation\Helpers\Arr;
 use svil4ok\Validation\Rules\Boolean;
 use svil4ok\Validation\Rules\Date;
 use svil4ok\Validation\Rules\DateAfter;
@@ -110,6 +111,14 @@ class Validator
      */
     protected function validateAttribute(Attribute $attribute)
     {
+        if ($this->hasAsterisks($attribute)) {
+            $asteriskAttributes = $this->parseAsteriskAttribute($attribute);
+
+            foreach ($asteriskAttributes as $asteriskAttribute) {
+                $this->validateAttribute($asteriskAttribute);
+            }
+        }
+
         $attributeKey = $attribute->getKey();
         $rules = $attribute->getRules();
         $value = $this->getValue($attributeKey);
@@ -127,6 +136,135 @@ class Validator
                 $this->addError($attribute, $value, $rule);
             }
         }
+    }
+
+    /**
+     * Determine if the attribute key has an asterisk (*) symbol.
+     *
+     * @param Attribute $attribute
+     *
+     * @return bool
+     */
+    protected function hasAsterisks(Attribute $attribute) : bool
+    {
+        return strpos($attribute->getKey(), '*') !== false;
+    }
+
+    /**
+     * Parse attribute array values by applying attribute's rules for each value.
+     *
+     * @param Attribute $attribute
+     *
+     * @return array
+     */
+    protected function parseAsteriskAttribute(Attribute $attribute) : array
+    {
+        $asteriskKey = $attribute->getKey();
+
+        $data = $this->getAsteriskAttributeData($asteriskKey);
+        $data = Arr::dot($data);
+
+        $data = array_merge($data, $this->extractWildcardsValues($data, $asteriskKey));
+
+        $pattern = str_replace('\*', '[^\.]+', preg_quote($asteriskKey));
+
+        $attributes = [];
+
+        foreach ($data as $key => $value) {
+            if ((bool) preg_match('/^' . $pattern . '\z/', $key)) {
+                $attributes[] =  new Attribute($key, $attribute->getRules(), $attribute->isRequired());
+            }
+        }
+
+        return $attributes;
+    }
+
+    /**
+     * Gather a copy of the attribute data filled with any missing attributes.
+     *
+     * @param string $attributeKey
+     *
+     * @return array
+     */
+    protected function getAsteriskAttributeData($attributeKey)
+    {
+        $leadingKey = $this->getLeadingKey($attributeKey);
+
+        $data = $this->extractDataFromPath($leadingKey);
+
+        $asteriksPosition = strpos($attributeKey, '*');
+
+        if ($asteriksPosition === false || ($asteriksPosition === strlen($attributeKey) - 1)) {
+            return $data;
+        }
+
+        return Arr::set($data, $attributeKey, null, true);
+    }
+
+    /**
+     * Get the explicit part of the attribute name.
+     *
+     * e.g. 'foo.bar.*.baz' --> 'foo.bar'
+     *
+     * @param string $attributeKey
+     *
+     * @return string|null
+     */
+    protected function getLeadingKey($attributeKey)
+    {
+        return rtrim(explode('*', $attributeKey)[0], '.') ?: null;
+    }
+
+    /**
+     * Extract data based on the given dot-notated path.
+     *
+     * @param string $attributeKey
+     *
+     * @return array
+     */
+    protected function extractDataFromPath(string $attributeKey) : array
+    {
+        $data = [];
+
+        $defaultValue = '__empty__';
+        $extractedData = Arr::get($this->data, $attributeKey, $defaultValue);
+
+        if ($extractedData !== $defaultValue) {
+            $data = Arr::set($data, $attributeKey, $extractedData);
+        }
+
+        return $data;
+    }
+
+    /**
+     * Extract attribute values for a given wildcard attribute.
+     *
+     * @param array $data
+     * @param string $attributeKey
+     *
+     * @return array
+     */
+    protected function extractWildcardsValues(array $data, string $attributeKey) : array
+    {
+        $keys = [];
+
+        $pattern = str_replace('\*', '[^\.]+', preg_quote($attributeKey));
+
+        foreach ($data as $key => $value) {
+            if ((bool) preg_match('/^' . $pattern . '/', $key, $matches)) {
+                $keys[] = $matches[0];
+            }
+        }
+
+        $keys = array_unique($keys);
+
+        $data = [];
+
+        foreach ($keys as $key) {
+            $data[$key] = Arr::get($this->data, $key);
+        }
+
+        return $data;
     }
 
     /**
@@ -177,17 +315,13 @@ class Validator
     /**
      * Get the value of a given attribute.
      *
-     * @param string $attribute
+     * @param string $attributeKey
      *
      * @return mixed|null
      */
-    protected function getValue($attribute)
+    protected function getValue($attributeKey)
     {
-        if (array_key_exists($attribute, $this->data)) {
-            return $this->data[$attribute];
-        }
-
-        return null;
+        return Arr::get($this->data, $attributeKey);
     }
 
     /**

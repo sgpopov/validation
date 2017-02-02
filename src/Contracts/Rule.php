@@ -1,6 +1,6 @@
 <?php
 
-namespace svil4ok\Validation\Contracts;
+namespace Validation\Contracts;
 
 interface Rule
 {

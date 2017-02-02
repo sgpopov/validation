@@ -1,8 +1,8 @@
 <?php
 
-namespace svil4ok\Validation;
+namespace Validation;
 
-use svil4ok\Validation\Contracts\Rule;
+use Validation\Contracts\Rule;
 
 class Attribute
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace svil4ok\Validation\Rules;
+namespace Validation\Rules;
 
 trait RuleTrait
 {

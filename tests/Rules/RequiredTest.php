@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use svil4ok\Validation\Rules\Required;
+use Validation\Rules\Required;
 
 class RequiredTest extends \PHPUnit_Framework_TestCase
 {

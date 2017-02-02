@@ -1,8 +1,8 @@
 <?php
 
-namespace svil4ok\Validation\Rules;
+namespace Validation\Rules;
 
-use svil4ok\Validation\Contracts\Rule;
+use Validation\Contracts\Rule;
 
 class Required implements Rule
 {

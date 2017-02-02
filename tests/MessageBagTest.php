@@ -1,6 +1,6 @@
 <?php
 
-use svil4ok\Validation\MessageBag;
+use Validation\MessageBag;
 
 class MessageBagTest extends PHPUnit_Framework_TestCase
 {

@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use svil4ok\Validation\Rules\Date;
+use Validation\Rules\Date;
 
 class DateTest extends \PHPUnit_Framework_TestCase
 {

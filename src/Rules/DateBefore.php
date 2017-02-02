@@ -1,9 +1,9 @@
 <?php
 
-namespace svil4ok\Validation\Rules;
+namespace Validation\Rules;
 
-use svil4ok\Validation\Contracts\Rule;
-use svil4ok\Validation\Contracts\RuleWithArgs;
+use Validation\Contracts\Rule;
+use Validation\Contracts\RuleWithArgs;
 
 class DateBefore implements Rule, RuleWithArgs
 {

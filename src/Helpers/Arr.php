@@ -1,6 +1,6 @@
 <?php
 
-namespace svil4ok\Validation\Helpers;
+namespace Validation\Helpers;
 
 class Arr
 {

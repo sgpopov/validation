@@ -1,10 +1,10 @@
 <?php
 
-use svil4ok\Validation\Attribute;
-use svil4ok\Validation\Contracts\Rule;
-use svil4ok\Validation\Rules\Max;
-use svil4ok\Validation\Rules\Min;
-use svil4ok\Validation\Rules\Required;
+use Validation\Attribute;
+use Validation\Contracts\Rule;
+use Validation\Rules\Max;
+use Validation\Rules\Min;
+use Validation\Rules\Required;
 
 class AttributeTest extends PHPUnit_Framework_TestCase
 {

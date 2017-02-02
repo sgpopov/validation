@@ -1,16 +1,16 @@
 <?php
 
-namespace svil4ok\Validation;
+namespace Validation;
 
-use svil4ok\Validation\Contracts\Rule;
-use svil4ok\Validation\Helpers\Arr;
-use svil4ok\Validation\Rules\Boolean;
-use svil4ok\Validation\Rules\Date;
-use svil4ok\Validation\Rules\DateAfter;
-use svil4ok\Validation\Rules\DateBefore;
-use svil4ok\Validation\Rules\Max;
-use svil4ok\Validation\Rules\Min;
-use svil4ok\Validation\Rules\Required;
+use Validation\Contracts\Rule;
+use Validation\Helpers\Arr;
+use Validation\Rules\Boolean;
+use Validation\Rules\Date;
+use Validation\Rules\DateAfter;
+use Validation\Rules\DateBefore;
+use Validation\Rules\Max;
+use Validation\Rules\Min;
+use Validation\Rules\Required;
 
 class Validator
 {

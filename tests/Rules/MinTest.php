@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use svil4ok\Validation\Rules\Min;
+use Validation\Rules\Min;
 
 class MinTest extends \PHPUnit_Framework_TestCase
 {

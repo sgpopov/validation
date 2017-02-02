@@ -1,10 +1,10 @@
 <?php
 
-use svil4ok\Validation\Contracts\Rule;
-use svil4ok\Validation\Rules\Min;
-use svil4ok\Validation\Rules\Required;
-use svil4ok\Validation\RulesParser;
-use svil4ok\Validation\Validator;
+use Validation\Contracts\Rule;
+use Validation\Rules\Min;
+use Validation\Rules\Required;
+use Validation\RulesParser;
+use Validation\Validator;
 
 class RulesParserTest extends PHPUnit_Framework_TestCase
 {

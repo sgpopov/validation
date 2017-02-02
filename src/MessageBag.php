@@ -1,8 +1,8 @@
 <?php
 
-namespace svil4ok\Validation;
+namespace Validation;
 
-use svil4ok\Validation\Contracts\MessageBag as MessageBagContract;
+use Validation\Contracts\MessageBag as MessageBagContract;
 
 class MessageBag implements MessageBagContract
 {

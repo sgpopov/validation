@@ -117,6 +117,8 @@ class Validator
             foreach ($asteriskAttributes as $asteriskAttribute) {
                 $this->validateAttribute($asteriskAttribute);
             }
+
+            return;
         }
 
         $attributeKey = $attribute->getKey();

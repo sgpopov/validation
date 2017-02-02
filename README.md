@@ -33,7 +33,7 @@ $rules = [
 ];
 
 $messages = [
-    'name.min' => 'Your comment should have at least 20 chars.'
+    'comment.min' => 'Your comment should have at least 20 chars.'
 ];
 
 $validator = Validator::make($input, $rules, $messages);
@@ -48,7 +48,7 @@ foreach ($errors as $error) {
 and the above example will output:
 
 ```
-TYour name should contain at least 20 chars.
+Your comment should have at least 20 chars.
 The users.1.age minimum is 18
 ```
 

@@ -4,12 +4,16 @@ namespace Validation;
 
 use Validation\Contracts\Rule;
 use Validation\Helpers\Arr;
+use Validation\Rules\Alpha;
+use Validation\Rules\AlphaNum;
 use Validation\Rules\Boolean;
 use Validation\Rules\Date;
 use Validation\Rules\DateAfter;
 use Validation\Rules\DateBefore;
+use Validation\Rules\Integer;
 use Validation\Rules\Max;
 use Validation\Rules\Min;
+use Validation\Rules\Numeric;
 use Validation\Rules\Required;
 
 class Validator
@@ -421,12 +425,16 @@ class Validator
     protected function registerDefaultValidators()
     {
         $validators = [
+            Alpha::class,
+            AlphaNum::class,
             Boolean::class,
             Date::class,
             DateAfter::class,
             DateBefore::class,
+            Integer::class,
             Max::class,
             Min::class,
+            Numeric::class,
             Required::class
         ];
 

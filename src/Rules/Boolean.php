@@ -6,6 +6,8 @@ use SGP\Validation\Contracts\Rule;
 
 class Boolean implements Rule
 {
+    use RuleTrait;
+
     /**
      * @var string
      */
@@ -15,11 +17,6 @@ class Boolean implements Rule
      * @var string
      */
     protected $message = "The :attribute must be able to be cast as a boolean.";
-
-    /**
-     * @var mixed
-     */
-    protected $params;
 
     /**
      * @return string
@@ -35,21 +32,6 @@ class Boolean implements Rule
     public function getMessage() : string
     {
         return $this->message;
-    }
-
-    /**
-     * @param mixed $params
-     *
-     * @return void
-     */
-    public function setParams($params = null)
-    {
-        $this->params = $params;
-    }
-
-    public function getParams() : array
-    {
-        return (array) $this->params;
     }
 
     /**

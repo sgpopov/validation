@@ -20,11 +20,6 @@ class Max implements Rule, RuleWithArgs
     protected $message = "The :attribute maximum is :max";
 
     /**
-     * @var mixed
-     */
-    protected $params;
-
-    /**
      * @return string
      */
     public function getSlug() : string
@@ -40,21 +35,6 @@ class Max implements Rule, RuleWithArgs
         $params = $this->getParams();
 
         return str_replace(':max', $params[0], $this->message);
-    }
-
-    /**
-     * @param mixed $params
-     *
-     * @return void
-     */
-    public function setParams($params = null)
-    {
-        $this->params = $params;
-    }
-
-    public function getParams() : array
-    {
-        return (array) $this->params;
     }
 
     /**

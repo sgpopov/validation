@@ -20,11 +20,6 @@ class Min implements Rule, RuleWithArgs
     protected $message = "The :attribute minimum is :min";
 
     /**
-     * @var mixed
-     */
-    protected $params;
-
-    /**
      * @return string
      */
     public function getSlug() : string

@@ -137,6 +137,8 @@ class Validator
         }
 
         foreach ($rules as $rule) {
+            $rule->setAttribute($attribute);
+
             $isValid = $rule->passes($value);
 
             if ($isValid !== true) {

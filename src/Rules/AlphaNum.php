@@ -6,6 +6,8 @@ use SGP\Validation\Contracts\Rule;
 
 class AlphaNum implements Rule
 {
+    use RuleTrait;
+
     /**
      * @var string
      */
@@ -15,11 +17,6 @@ class AlphaNum implements Rule
      * @var string
      */
     protected $slug = 'alpha_num';
-
-    /**
-     * @var mixed
-     */
-    protected $params;
 
     /**
      * @return string
@@ -35,22 +32,6 @@ class AlphaNum implements Rule
     public function getMessage() : string
     {
         return $this->message;
-    }
-
-    /**
-     * @param mixed|null $params
-     */
-    public function setParams($params = null)
-    {
-        $this->params = $params;
-    }
-
-    /**
-     * @return array
-     */
-    public function getParams(): array
-    {
-        return (array) $this->params;
     }
 
     /**

@@ -6,6 +6,8 @@ use SGP\Validation\Contracts\Rule;
 
 class Date implements Rule
 {
+    use RuleTrait;
+
     /**
      * @var string
      */
@@ -15,11 +17,6 @@ class Date implements Rule
      * @var string
      */
     protected $message = "The :attribute is not valid date format.";
-
-    /**
-     * @var mixed
-     */
-    protected $params;
 
     /**
      * @return string
@@ -35,24 +32,6 @@ class Date implements Rule
     public function getMessage() : string
     {
         return $this->message;
-    }
-
-    /**
-     * @param mixed $params
-     *
-     * @return void
-     */
-    public function setParams($params = null)
-    {
-        $this->params = $params;
-    }
-
-    /**
-     * @return array
-     */
-    public function getParams() : array
-    {
-        return (array) $this->params;
     }
 
     /**

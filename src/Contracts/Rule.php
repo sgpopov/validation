@@ -2,6 +2,8 @@
 
 namespace SGP\Validation\Contracts;
 
+use SGP\Validation\Attribute;
+
 interface Rule
 {
     /**
@@ -25,6 +27,18 @@ interface Rule
      * @return array
      */
     public function getParams() : array;
+
+    /**
+     * @param Attribute $attribute
+     *
+     * @return void
+     */
+    public function setAttribute(Attribute $attribute);
+
+    /**
+     * @return Attribute
+     */
+    public function getAttribute() : Attribute;
 
     /**
      * @param mixed $value

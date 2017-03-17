@@ -21,11 +21,6 @@ class DateBefore implements Rule, RuleWithArgs
     protected $message = "The :attribute date must be before :date.";
 
     /**
-     * @var mixed
-     */
-    protected $params;
-
-    /**
      * @return string
      */
     public function getSlug() : string
@@ -41,24 +36,6 @@ class DateBefore implements Rule, RuleWithArgs
         $params = $this->getParams();
 
         return str_replace(':date', $params[0], $this->message);
-    }
-
-    /**
-     * @param mixed $params
-     *
-     * @return void
-     */
-    public function setParams($params = null)
-    {
-        $this->params = $params;
-    }
-
-    /**
-     * @return array
-     */
-    public function getParams() : array
-    {
-        return (array) $this->params;
     }
 
     /**

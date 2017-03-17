@@ -11,6 +11,7 @@ use SGP\Validation\Rules\Date;
 use SGP\Validation\Rules\DateAfter;
 use SGP\Validation\Rules\DateBefore;
 use SGP\Validation\Rules\Integer;
+use SGP\Validation\Rules\IsArray;
 use SGP\Validation\Rules\Max;
 use SGP\Validation\Rules\Min;
 use SGP\Validation\Rules\Numeric;
@@ -427,6 +428,7 @@ class Validator
         $validators = [
             Alpha::class,
             AlphaNum::class,
+            IsArray::class,
             Boolean::class,
             Date::class,
             DateAfter::class,

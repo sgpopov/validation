@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\Boolean;
+use SGP\Validation\Rules\Boolean;
 
 class BooleanTest extends \PHPUnit_Framework_TestCase
 {

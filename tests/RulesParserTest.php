@@ -1,10 +1,10 @@
 <?php
 
-use Validation\Contracts\Rule;
-use Validation\Rules\Min;
-use Validation\Rules\Required;
-use Validation\RulesParser;
-use Validation\Validator;
+use SGP\Validation\Contracts\Rule;
+use SGP\Validation\Rules\Min;
+use SGP\Validation\Rules\Required;
+use SGP\Validation\RulesParser;
+use SGP\Validation\Validator;
 
 class RulesParserTest extends PHPUnit_Framework_TestCase
 {

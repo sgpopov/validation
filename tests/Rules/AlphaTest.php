@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\Alpha;
+use SGP\Validation\Rules\Alpha;
 
 class AlphaTest extends \PHPUnit_Framework_TestCase
 {

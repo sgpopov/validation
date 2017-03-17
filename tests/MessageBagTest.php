@@ -1,6 +1,6 @@
 <?php
 
-use Validation\MessageBag;
+use SGP\Validation\MessageBag;
 
 class MessageBagTest extends PHPUnit_Framework_TestCase
 {

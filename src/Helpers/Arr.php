@@ -1,6 +1,6 @@
 <?php
 
-namespace Validation\Helpers;
+namespace SGP\Validation\Helpers;
 
 class Arr
 {

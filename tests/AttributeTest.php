@@ -1,10 +1,10 @@
 <?php
 
-use Validation\Attribute;
-use Validation\Contracts\Rule;
-use Validation\Rules\Max;
-use Validation\Rules\Min;
-use Validation\Rules\Required;
+use SGP\Validation\Attribute;
+use SGP\Validation\Contracts\Rule;
+use SGP\Validation\Rules\Max;
+use SGP\Validation\Rules\Min;
+use SGP\Validation\Rules\Required;
 
 class AttributeTest extends PHPUnit_Framework_TestCase
 {

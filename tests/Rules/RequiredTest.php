@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\Required;
+use SGP\Validation\Rules\Required;
 
 class RequiredTest extends \PHPUnit_Framework_TestCase
 {

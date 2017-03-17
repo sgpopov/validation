@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\Min;
+use SGP\Validation\Rules\Min;
 
 class MinTest extends \PHPUnit_Framework_TestCase
 {

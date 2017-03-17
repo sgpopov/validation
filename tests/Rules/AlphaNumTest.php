@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\AlphaNum;
+use SGP\Validation\Rules\AlphaNum;
 
 class AlphaNumTest extends \PHPUnit_Framework_TestCase
 {

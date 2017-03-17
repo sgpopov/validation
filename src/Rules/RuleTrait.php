@@ -1,6 +1,6 @@
 <?php
 
-namespace Validation\Rules;
+namespace SGP\Validation\Rules;
 
 trait RuleTrait
 {

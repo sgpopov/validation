@@ -1,8 +1,8 @@
 <?php
 
-namespace Validation\Rules;
+namespace SGP\Validation\Rules;
 
-use Validation\Contracts\Rule;
+use SGP\Validation\Contracts\Rule;
 
 class Date implements Rule
 {

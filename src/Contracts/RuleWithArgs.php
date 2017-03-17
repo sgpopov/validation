@@ -1,6 +1,6 @@
 <?php
 
-namespace Validation\Contracts;
+namespace SGP\Validation\Contracts;
 
 interface RuleWithArgs
 {

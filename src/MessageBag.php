@@ -1,8 +1,8 @@
 <?php
 
-namespace Validation;
+namespace SGP\Validation;
 
-use Validation\Contracts\MessageBag as MessageBagContract;
+use SGP\Validation\Contracts\MessageBag as MessageBagContract;
 
 class MessageBag implements MessageBagContract
 {

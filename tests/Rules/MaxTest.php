@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\Max;
+use SGP\Validation\Rules\Max;
 
 class MaxTest extends \PHPUnit_Framework_TestCase
 {

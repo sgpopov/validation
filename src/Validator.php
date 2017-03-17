@@ -1,20 +1,20 @@
 <?php
 
-namespace Validation;
+namespace SGP\Validation;
 
-use Validation\Contracts\Rule;
-use Validation\Helpers\Arr;
-use Validation\Rules\Alpha;
-use Validation\Rules\AlphaNum;
-use Validation\Rules\Boolean;
-use Validation\Rules\Date;
-use Validation\Rules\DateAfter;
-use Validation\Rules\DateBefore;
-use Validation\Rules\Integer;
-use Validation\Rules\Max;
-use Validation\Rules\Min;
-use Validation\Rules\Numeric;
-use Validation\Rules\Required;
+use SGP\Validation\Contracts\Rule;
+use SGP\Validation\Helpers\Arr;
+use SGP\Validation\Rules\Alpha;
+use SGP\Validation\Rules\AlphaNum;
+use SGP\Validation\Rules\Boolean;
+use SGP\Validation\Rules\Date;
+use SGP\Validation\Rules\DateAfter;
+use SGP\Validation\Rules\DateBefore;
+use SGP\Validation\Rules\Integer;
+use SGP\Validation\Rules\Max;
+use SGP\Validation\Rules\Min;
+use SGP\Validation\Rules\Numeric;
+use SGP\Validation\Rules\Required;
 
 class Validator
 {

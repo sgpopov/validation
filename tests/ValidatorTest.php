@@ -1,8 +1,8 @@
 <?php
 
-use Validation\Attribute;
-use Validation\MessageBag;
-use Validation\Validator;
+use SGP\Validation\Attribute;
+use SGP\Validation\MessageBag;
+use SGP\Validation\Validator;
 
 class ValidatorTest extends PHPUnit_Framework_TestCase
 {

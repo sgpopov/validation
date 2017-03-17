@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\Integer;
+use SGP\Validation\Rules\Integer;
 
 class IntegerTest extends \PHPUnit_Framework_TestCase
 {

@@ -9,7 +9,7 @@ Simple and lightweight standalone PHP library for validating data.
 ````php
 <?php
 
-use Validation\Validator;
+use SGP\Validation\Validator;
 
 $input = [
     'name' => 'Svilen Popov',

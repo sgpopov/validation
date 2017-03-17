@@ -1,9 +1,9 @@
 <?php
 
-namespace Validation;
+namespace SGP\Validation;
 
-use Validation\Contracts\Rule;
-use Validation\Rules\Required;
+use SGP\Validation\Contracts\Rule;
+use SGP\Validation\Rules\Required;
 
 class RulesParser
 {

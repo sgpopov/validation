@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\DateBefore;
+use SGP\Validation\Rules\DateBefore;
 
 class DateBeforeTest extends \PHPUnit_Framework_TestCase
 {

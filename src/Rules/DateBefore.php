@@ -1,9 +1,9 @@
 <?php
 
-namespace Validation\Rules;
+namespace SGP\Validation\Rules;
 
-use Validation\Contracts\Rule;
-use Validation\Contracts\RuleWithArgs;
+use SGP\Validation\Contracts\Rule;
+use SGP\Validation\Contracts\RuleWithArgs;
 
 class DateBefore implements Rule, RuleWithArgs
 {

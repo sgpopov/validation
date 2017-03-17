@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\DateAfter;
+use SGP\Validation\Rules\DateAfter;
 
 class DateAfterTest extends \PHPUnit_Framework_TestCase
 {

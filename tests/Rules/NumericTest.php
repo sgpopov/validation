@@ -2,7 +2,7 @@
 
 namespace Rules;
 
-use Validation\Rules\Numeric;
+use SGP\Validation\Rules\Numeric;
 
 class NumericTest extends \PHPUnit_Framework_TestCase
 {

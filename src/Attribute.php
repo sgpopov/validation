@@ -1,8 +1,8 @@
 <?php
 
-namespace Validation;
+namespace SGP\Validation;
 
-use Validation\Contracts\Rule;
+use SGP\Validation\Contracts\Rule;
 
 class Attribute
 {

@@ -138,6 +138,7 @@ class Validator
 
         foreach ($rules as $rule) {
             $rule->setAttribute($attribute);
+            $rule->setData($this->data);
 
             $isValid = $rule->passes($value);
 

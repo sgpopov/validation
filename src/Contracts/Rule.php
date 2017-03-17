@@ -41,6 +41,18 @@ interface Rule
     public function getAttribute() : Attribute;
 
     /**
+     * @param array $data
+     *
+     * @return void
+     */
+    public function setData(array $data);
+
+    /**
+     * @return array
+     */
+    public function getData() : array;
+
+    /**
      * @param mixed $value
      *
      * @return bool

@@ -17,6 +17,11 @@ trait RuleTrait
     protected $attribute;
 
     /**
+     * @var array
+     */
+    protected $data;
+
+    /**
      * @param mixed $params
      *
      * @return void
@@ -50,6 +55,23 @@ trait RuleTrait
     public function getAttribute() : Attribute
     {
         return $this->attribute;
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return void
+     */
+    public function setData(array $data) {
+        $this->data = $data;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData() : array
+    {
+        return $this->data;
     }
 
     /**

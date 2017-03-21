@@ -36,6 +36,22 @@ class SameTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      *
+     * @covers Same::getMessage()
+     */
+    public function shouldReturnFormattedMessage()
+    {
+        $this->rule->setData([]);
+        $this->rule->setParams(['field1']);
+
+        $this->assertSame(
+            $this->rule->getMessage(),
+            'The :attribute value must be the same as the field1 value'
+        );
+    }
+
+    /**
+     * @test
+     *
      * @covers Same::passes()
      */
     public function shouldValidateInput()

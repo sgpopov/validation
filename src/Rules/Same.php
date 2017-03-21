@@ -12,7 +12,7 @@ class Same implements Rule
     /**
      * @var string
      */
-    protected $message = "The :attribute must contains only alphabetic characters.";
+    protected $message = "The :attribute value must be the same as the :other-attribute value";
 
     /**
      * @var string
@@ -32,7 +32,9 @@ class Same implements Rule
      */
     public function getMessage() : string
     {
-        return $this->message;
+        $params = $this->getParams();
+
+        return str_replace(':other-attribute', $params[0], $this->message);
     }
 
     /**

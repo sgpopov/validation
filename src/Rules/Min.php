@@ -47,6 +47,9 @@ class Min implements Rule, RuleWithArgs
         $this->params = $params;
     }
 
+    /**
+     * @return array
+     */
     public function getParams() : array
     {
         return (array) $this->params;

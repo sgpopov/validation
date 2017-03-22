@@ -42,6 +42,8 @@ class DateAfter implements Rule, RuleWithArgs
      * @param mixed $value
      *
      * @return bool
+     *
+     * @throws \InvalidArgumentException
      */
     public function passes($value) : bool
     {

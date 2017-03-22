@@ -15,7 +15,7 @@ class Arr
      */
     public static function get(array $array, $key, $default = null)
     {
-        if (is_null($key)) {
+        if (empty($key) && $key != 0) {
             return $default ?: $array;
         }
 
@@ -59,7 +59,7 @@ class Arr
                 foreach ($array as &$inner) {
                     static::set($inner, $segments, $value, $overwrite);
                 }
-            } else if ($overwrite) {
+            } elseif ($overwrite) {
                 $array = array_map(function () use ($value) {
                     return $value;
                 }, $array);
@@ -71,7 +71,7 @@ class Arr
                 }
 
                 static::set($array[$segment], $segments, $value, $overwrite);
-            } else if ($overwrite || !array_key_exists($segment, $array)) {
+            } elseif ($overwrite || !array_key_exists($segment, $array)) {
                 $array[$segment] = $value;
             }
         }

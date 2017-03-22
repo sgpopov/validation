@@ -54,7 +54,7 @@ class Attribute
     }
 
     /**
-     * @param $ruleKey
+     * @param string $ruleKey
      *
      * @return mixed|null
      */
@@ -72,7 +72,7 @@ class Attribute
     }
 
     /**
-     * @param $ruleKey
+     * @param string $ruleKey
      *
      * @return bool
      */

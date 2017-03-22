@@ -100,7 +100,7 @@ class Validator
      */
     public function run()
     {
-        foreach($this->attributes as $attributeKey => $attribute) {
+        foreach ($this->attributes as $attributeKey => $attribute) {
             $this->validateAttribute($attribute);
         }
 
@@ -182,7 +182,7 @@ class Validator
 
         foreach ($data as $key => $value) {
             if ((bool) preg_match('/^' . $pattern . '\z/', $key)) {
-                $attributes[] =  new Attribute($key, $attribute->getRules(), $attribute->isRequired());
+                $attributes[] = new Attribute($key, $attribute->getRules(), $attribute->isRequired());
             }
         }
 
@@ -278,8 +278,10 @@ class Validator
     }
 
     /**
+     * Register attribute error.
+     *
      * @param Attribute $attribute
-     * @param $value
+     * @param mixed $value
      * @param Rule $rule
      *
      * @return void
@@ -295,7 +297,7 @@ class Validator
      * Retrieve rule error message.
      *
      * @param Attribute $attribute
-     * @param $value
+     * @param mixed $value
      * @param Rule $rule
      *
      * @return mixed|string
@@ -345,7 +347,9 @@ class Validator
     }
 
     /**
-     * @param $value
+     * Determine if provided value is empty.
+     *
+     * @param mixed $value
      *
      * @return bool
      */
@@ -373,7 +377,7 @@ class Validator
     {
         if (is_string($value) || is_numeric($value)) {
             return $value;
-        } else if (is_array($value) || is_object($value)) {
+        } elseif (is_array($value) || is_object($value)) {
             return json_encode($value);
         } else {
             return '';

@@ -72,7 +72,7 @@ class MessageBag implements MessageBagContract
      */
     public function has($keys = null) : bool
     {
-        if (is_null($keys)) {
+        if (empty($keys)) {
             return $this->hasAny();
         }
 
@@ -106,7 +106,7 @@ class MessageBag implements MessageBagContract
      */
     public function first(string $key = null)
     {
-        $messages = is_null($key) ? $this->all() : $this->get($key);
+        $messages = empty($key) ? $this->all() : $this->get($key);
 
         return empty($messages) ? null : array_shift($messages);
     }

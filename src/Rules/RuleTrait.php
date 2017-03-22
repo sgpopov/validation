@@ -22,6 +22,8 @@ trait RuleTrait
     protected $data;
 
     /**
+     * Set rule parameters.
+     *
      * @param mixed $params
      *
      * @return void
@@ -32,6 +34,8 @@ trait RuleTrait
     }
 
     /**
+     * Return rule parameters.
+     *
      * @return array
      */
     public function getParams() : array
@@ -58,15 +62,20 @@ trait RuleTrait
     }
 
     /**
+     * Set attribute data.
+     *
      * @param array $data
      *
      * @return void
      */
-    public function setData(array $data) {
+    public function setData(array $data)
+    {
         $this->data = $data;
     }
 
     /**
+     * Get attribute data.
+     *
      * @return array
      */
     public function getData() : array

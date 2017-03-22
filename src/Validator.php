@@ -10,12 +10,14 @@ use SGP\Validation\Rules\Boolean;
 use SGP\Validation\Rules\Date;
 use SGP\Validation\Rules\DateAfter;
 use SGP\Validation\Rules\DateBefore;
+use SGP\Validation\Rules\Equals;
 use SGP\Validation\Rules\Integer;
 use SGP\Validation\Rules\IsArray;
 use SGP\Validation\Rules\Max;
 use SGP\Validation\Rules\Min;
 use SGP\Validation\Rules\Numeric;
 use SGP\Validation\Rules\Required;
+use SGP\Validation\Rules\Same;
 
 class Validator
 {
@@ -440,11 +442,13 @@ class Validator
             Date::class,
             DateAfter::class,
             DateBefore::class,
+            Equals::class,
             Integer::class,
             Max::class,
             Min::class,
             Numeric::class,
-            Required::class
+            Required::class,
+            Same::class
         ];
 
         foreach ($validators as $validator) {

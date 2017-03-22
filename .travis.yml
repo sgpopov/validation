@@ -7,3 +7,9 @@ php:
 before_script:
   - composer self-update
   - composer install --dev --prefer-source --no-interaction
+
+script:
+  - vendor/bin/phpcs --standard=ruleset.xml -s ./src
+
+notifications:
+  email: false

@@ -49,6 +49,6 @@ class Required implements Rule
             return count($value) > 0;
         }
 
-        return !empty($value) && $value != 0;
+        return $value !== null;
     }
 }
